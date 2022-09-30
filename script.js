@@ -78,11 +78,31 @@ function getRandom(arr) {
 
 // Function for generating a password with given inputs
 function generatePassword() {
-  // 2)
   var options = getPasswordOptions();
-  //Code Your logic Below
-
-  // return "123456789"
+  // Create an empty array
+  var currentArr = new Array()
+  // Conditional Statement that concatinates a new array
+  if (options.hasSpecialCharacters) {
+    currentArr= currentArr.concat(specialCharacters)
+  }
+  if (options.hasNumericCharacters) {
+    currentArr= currentArr.concat(numericCharacters)
+  }
+  if (options.hasLowercaseCharacters) {
+    currentArr= currentArr.concat(lowerCasedCharacters)
+  }
+  if(options.hasUppercaseCharacters) {
+    currentArr= currentArr.concat(upperCasedCharacters)
+  }
+  console.log(currentArr)
+  // Generate random string password from new array
+  let pass = ""
+  let i = 0
+  while (i < options.length) {
+    pass += getRandom(currentArr);
+    i++
+  } 
+  return pass
 }
 
 // Write password to the #password input
